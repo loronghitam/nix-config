@@ -40,6 +40,7 @@
     helix
     wget
     nixd
+    nixpkgs-fmt
     cachix
   ];
 
