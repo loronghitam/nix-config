@@ -2,8 +2,8 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
@@ -12,13 +12,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ...  }: {
-
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem { 
-      system = "x86_664-linux";
-      modules = [
-        ./configuration.nix
+      nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_664-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos
         ];
       };
     };
@@ -26,7 +26,7 @@
       "muggle@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
-        ./home.nix
+          ./home
         ];
       };
     };
