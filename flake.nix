@@ -24,15 +24,14 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos
-          ];
-        };
-      };
-      homeConfigurations = {
-        "muggle@nixos" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home
-          ];
+                      home-manager.nixosModules.home-manager
+ {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.muggle = import ./home;
+            }
+
+                ];
         };
       };
     };
