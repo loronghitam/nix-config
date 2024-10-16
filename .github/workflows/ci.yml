@@ -25,27 +25,16 @@ jobs:
           name: muggle
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Check for NixOS configuration changes
-        id: nixos-changes
+      - name: Check for configuration changes
+        id: config-changes
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'nixos/' && echo "::set-output name=changed::true" || echo "::set-output name=changed::false"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -qE '(nixos/|home/)' && echo "changed=true" >> $GITHUB_OUTPUT || echo "changed=false" >> $GITHUB_OUTPUT
 
-      - name: Check for Home Manager configuration changes
-        id: home-changes
-        run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'home-manager/' && echo "::set-output name=changed::true" || echo "::set-output name=changed::false"
-
-      - name: Build and push NixOS Configuration
-        if: steps.nixos-changes.outputs.changed == 'true'
+      - name: Build and push NixOS Configuration (including Home Manager)
+        if: steps.config-changes.outputs.changed == 'true'
         run: |
           nix build .#nixosConfigurations.nixos.config.system.build.toplevel
           nix path-info --recursive .#nixosConfigurations.nixos.config.system.build.toplevel | cachix push muggle
-
-      - name: Build and push Home Manager Configuration
-        if: steps.home-changes.outputs.changed == 'true'
-        run: |
-          nix build .#homeConfigurations."muggle@nixos".activationPackage
-          nix path-info --recursive .#homeConfigurations."muggle@nixos".activationPackage | cachix push muggle
 
       - name: Test configurations
         run: |

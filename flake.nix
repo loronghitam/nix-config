@@ -10,9 +10,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager,nix-index-database, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -24,14 +27,15 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos
-                      home-manager.nixosModules.home-manager
- {
+                      nix-index-database.nixosModules.nix-index
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.muggle = import ./home;
             }
 
-                ];
+          ];
         };
       };
     };
