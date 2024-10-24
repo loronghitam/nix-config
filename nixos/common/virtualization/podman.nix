@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  boot.enableContainers = false; # atau hapus baris ini
+  virtualisation.containers.enable = true;
   virtualisation = {
     podman = {
       enable = true;

@@ -31,8 +31,8 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./nixos
-          nix-index-database.nixosModules.nix-index
           home-manager.nixosModules.home-manager
+          nix-index-database.nixosModules.nix-index
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

@@ -20,6 +20,7 @@
     nixd
     nixpkgs-fmt
     cachix
+    comma
   ];
 
   system.stateVersion = "unstable";
