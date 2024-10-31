@@ -1,3 +1,8 @@
 {
-  programs.alacritty.enable = true;
+  programs.alacritty = {
+    enable = true;
+    catppuccin = {
+      enable = true;
+    };
+  };
 }

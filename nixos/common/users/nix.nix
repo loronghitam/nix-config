@@ -4,7 +4,7 @@
   ...
 }: {
   nix = {
-    # nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     package = pkgs.nixVersions.stable;
     settings = {
       auto-optimise-store = true;

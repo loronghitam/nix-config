@@ -21,22 +21,19 @@
     home-manager,
     nix-index-database,
     ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  } @ inputs: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
           ./nixos
-          home-manager.nixosModules.home-manager
           nix-index-database.nixosModules.nix-index
+          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.muggle = import ./home;
+            home-manager.users.muggle.imports = [./home];
           }
         ];
       };

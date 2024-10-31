@@ -1,15 +1,17 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
     shellAbbrs = {
       nrs = "sudo nixos-rebuild switch --flake ~/nix-config/";
     };
-    # interactiveShellInit = lib.mkAfter ''
-    #   ${pkgs.direnv} hook fish | source
-    # '';
+    shellInit = ''
+      # direnv hook
+      if status --is-interactive
+        eval (direnv hook fish)
+      end
+    '';
   };
 }
