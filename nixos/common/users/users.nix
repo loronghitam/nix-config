@@ -1,14 +1,20 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  systemSettings,
+  userSettings,
+  ...
+}: {
   users = {
     defaultUserShell = pkgs.fish;
     extraGroups = {
       vboxusers = {
-        members = ["muggle"];
+        members = [userSettings.username];
       };
     };
     users.muggle = {
       isNormalUser = true;
       extraGroups = ["wheel" "audio" "networkmanager" "vboxusers"];
+      uid = 1000;
       packages = with pkgs; [
         git
         zellij

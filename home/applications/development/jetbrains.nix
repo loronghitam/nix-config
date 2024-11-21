@@ -4,7 +4,5 @@
     phpstorm
     idea-ultimate
     webstorm
-    writerside
-    datagrip
   ];
 }

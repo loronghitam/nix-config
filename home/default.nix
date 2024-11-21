@@ -2,22 +2,34 @@
   imports = [
     ./applications
     ./development
-    ./packagese
+    ./packages
     ./shell
   ];
-  home = {
-    username = "muggle";
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
   };
-  home.homeDirectory = "/home/muggle";
 
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    grc
-    libnotify
-    (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
-  ];
+
+  home = {
+    username = "muggle";
+    homeDirectory = "/home/muggle";
+    packages = with pkgs; [
+      oh-my-fish
+      eza
+      (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
+    ];
+  };
 
   home.stateVersion = "24.11";
 
   programs.home-manager.enable = true;
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 }

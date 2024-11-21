@@ -1,5 +1,5 @@
 {
-  programs.zellij = {
+  plugins.web-devicons = {
     enable = true;
   };
 }

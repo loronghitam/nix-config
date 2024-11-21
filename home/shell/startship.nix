@@ -11,12 +11,11 @@
     in {
       add_newline = true;
       command_timeout = 1000;
-      cmd_duration = {
-        format = withStartLineBreak "[$duration]($style)";
-        style = "bold #EC7279";
-        show_notifications = true;
-      };
-
+      # cmd_duration = {
+      #   format = withStartLineBreak "[$duration]($style)";
+      #   style = "bold #EC7279";
+      #   show_notifications = true;
+      # };
       battery = {
         full_symbol = "🔋 ";
         charging_symbol = "⚡️ ";

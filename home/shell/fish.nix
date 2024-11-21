@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -6,6 +11,8 @@
     '';
     shellAbbrs = {
       nrs = "sudo nixos-rebuild switch --flake ~/nix-config/";
+      ls = "eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions";
+      ll = "eza --icons=always --long";
     };
     shellInit = ''
       # direnv hook

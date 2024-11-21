@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  boot.enableContainers = false; # atau hapus baris ini
+  boot.enableContainers = false;
   virtualisation.containers.enable = true;
   virtualisation = {
     podman = {
@@ -10,8 +10,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    dive # look into docker image layers
-    podman-tui # status of containers in the terminal
-    podman-compose # start group of containers for dev
+    dive
+    podman-tui
+    podman-compose
   ];
 }

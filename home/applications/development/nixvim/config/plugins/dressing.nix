@@ -1,5 +1,5 @@
 {
-  programs.zellij = {
+  plugins.dressing = {
     enable = true;
   };
 }

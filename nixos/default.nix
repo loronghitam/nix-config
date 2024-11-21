@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware
     ./common/desktop
@@ -11,19 +15,19 @@
     ./common/global/time.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
-    helix
-    wget
-    nixd
-    nixpkgs-fmt
     cachix
-    cowsay
     comma
     devenv
-    fish
   ];
+
   programs.fish.enable = true;
 
   programs.nix-index-database = {
@@ -35,4 +39,11 @@
   programs.nix-index.enableBashIntegration = true;
 
   system.stateVersion = "unstable";
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/muggle/nix-config";
+  };
 }

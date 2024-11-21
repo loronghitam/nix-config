@@ -13,6 +13,12 @@
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
@@ -20,12 +26,39 @@
     nixpkgs,
     home-manager,
     nix-index-database,
+    catppuccin,
+    nixvim,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    systemSettings = {
+      system = "x86_64-linux";
+      hostname = "nixos";
+      timezone = "Asia/Jakarta";
+      locale = "id_ID.UTF-8";
+    };
+    userSettings = {
+      username = "muggle";
+      defautlEditor = "";
+      term = "";
+    };
+
+    system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        inherit system;
+        specialArgs = {
+          inherit
+            inputs
+            userSettings
+            systemSettings
+            ;
+        };
         modules = [
           ./nixos
           nix-index-database.nixosModules.nix-index
@@ -33,7 +66,18 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.muggle.imports = [./home];
+            home-manager.extraSpecialArgs = {
+              inherit
+                inputs
+                userSettings
+                systemSettings
+                ;
+            };
+            home-manager.users.muggle.imports = [
+              catppuccin.homeManagerModules.catppuccin
+              nixvim.homeManagerModules.nixvim
+              ./home
+            ];
           }
         ];
       };

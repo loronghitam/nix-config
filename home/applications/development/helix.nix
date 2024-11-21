@@ -1,7 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.helix = {
     enable = true;
+    catppuccin = {
+      enable = true;
+    };
     settings = {
+      theme = lib.mkForce "cattpuccin-transparent";
       editor = {
         lsp = {
           display-inlay-hints = true;
@@ -31,7 +39,25 @@
           formatter.command = "${pkgs.alejandra}/bin/alejandra";
           language-servers = ["nixd"];
         }
+        {
+          name = "kdl";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.kdlfmt}/bin/kdlfmt";
+            args = ["format" "-"];
+          };
+        }
+        {
+          name = "lua";
+          auto-format = true;
+        }
       ];
+    };
+    themes = {
+      cattpuccin-transparent = {
+        "inherits" = "catppuccin-mocha";
+        "ui.background" = {};
+      };
     };
   };
 }

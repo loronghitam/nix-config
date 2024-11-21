@@ -1,3 +1,3 @@
-{
-  time.timeZone = "Asia/Jakarta";
+{systemSettings, ...}: {
+  time.timeZone = systemSettings.timezone;
 }
