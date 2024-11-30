@@ -10,6 +10,7 @@
     ./common/powermanagement
     ./common/users
     ./common/direnv
+    ./common/security
     ./common/virtualization
     ./common/global/i18n.nix
     ./common/global/time.nix
@@ -46,4 +47,6 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/muggle/nix-config";
   };
+
+  home-manager.backupFileExtension = "backup";
 }

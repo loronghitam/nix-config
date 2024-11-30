@@ -35,6 +35,14 @@
       # Blade template
       tailwindcss.enable = true;
     };
+
+    preConfig = ''
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.semanticTokensProvider = nil
+    '';
+    onAttach = ''
+      client.server_capabilities.semanticTokensProvider = nil
+    '';
   };
   plugins.lsp-format.enable = true;
 }

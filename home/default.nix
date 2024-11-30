@@ -13,15 +13,12 @@
     };
   };
 
-  fonts.fontconfig.enable = true;
-
   home = {
     username = "muggle";
     homeDirectory = "/home/muggle";
     packages = with pkgs; [
       oh-my-fish
       eza
-      (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
     ];
   };
 
@@ -31,5 +28,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    NIXOS_OZONE_WL = "1";
   };
 }

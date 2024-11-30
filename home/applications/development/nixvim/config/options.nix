@@ -4,6 +4,9 @@
       register = "unnamedplus";
       providers.xsel.enable = true;
     };
+    globals = {
+      semantic_tokens_enabled = false;
+    };
   };
   config.opts = {
     relativenumber = true;

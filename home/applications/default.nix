@@ -4,6 +4,7 @@
     ./communications
     ./development
     #    ./office
+    ./hyprland
     ./terminal
   ];
 }
