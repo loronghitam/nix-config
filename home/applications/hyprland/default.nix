@@ -39,6 +39,7 @@
       "exec-once" = [
         "waybar"
         "hypridle"
+        "hyprpaper"
         "dbus-update-activation-environment --systemd --all"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
       ];

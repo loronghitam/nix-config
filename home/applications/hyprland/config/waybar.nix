@@ -104,12 +104,11 @@
       #waybar {
         background: transparent;
         color: @text;
-        margin: 5px 5px;
       }
 
       #workspaces {
         background-color: @surface0;
-        margin: 5px;
+        margin: 5px 5px;
         border-radius: 1rem;
         padding-left: 4px;
         padding-right: 10px;
@@ -131,7 +130,7 @@
       #workspaces button:hover {
         background: none;
         border: none;
-        color: #72D792;
+        color: @sapphire;
         box-shadow: none; /* Remove predefined box-shadow */
         text-shadow: none; /* Remove predefined text-shadow */
         background: none; /* Remove predefined background color (white) */
@@ -148,29 +147,29 @@
       #custom-power {
         background-color: @surface0;
         padding: 0.5rem 1rem;
-        margin: 5px 0;
+        margin: 5px 0px;
+      }
+
+      #backlight {
+        color: @yellow;
       }
 
       #bluetooth {
-        color: #E6E7E7;
-        background:  #161320;
-        opacity: 1;
-        margin: 4px 0px 4px 0px;
-        padding-left: 4px;
-        padding-right: 4px;
+        color: @blue;
       }
 
       #battery{
-        color: #a6d189;
+        color: @green;
       }
 
       #clock{
-          color: #A1BDCE;
+          color: @blue;
           border-radius: 1rem;
+          margin: 5px 5px;
       }
 
       #pulseaudio{
-          color: #6F8FDB;
+          color: @maroon;
       }
 
       #cpu{
@@ -183,11 +182,11 @@
 
       #battery.charging,
       #battery.plugged {
-      	color: #E8EDF0;
+      	color: @green;
       }
 
       #battery.critical:not(.charging) {
-          color: red;
+          color: @red;
       }
 
       #cpu {
