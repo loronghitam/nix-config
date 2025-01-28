@@ -3,8 +3,9 @@
     ./browsers
     ./communications
     ./development
-    #    ./office
-    ./hyprland
+    ./office
+    # ./hyprland
+    ./swaywm
     ./terminal
   ];
 }

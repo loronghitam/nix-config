@@ -14,6 +14,7 @@
     ./common/virtualization
     ./common/global/i18n.nix
     ./common/global/time.nix
+    ./common/steam
   ];
 
   nixpkgs = {
@@ -48,5 +49,10 @@
     flake = "/home/muggle/nix-config";
   };
 
-  home-manager.backupFileExtension = "backup";
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
+  home-manager.backupFileExtension = "home-manager.bak";
 }

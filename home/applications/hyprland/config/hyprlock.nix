@@ -3,8 +3,9 @@
     enable = true;
     settings = {
       general = {
+        ignore_empty_input = true;
         disable_loading_bar = true;
-        grace = 300;
+        # grace = 300;
         hide_cursor = true;
         no_fade_in = false;
       };
@@ -17,19 +18,26 @@
         }
       ];
 
+      label = {
+      };
+
       input-field = [
         {
-          size = "200, 50";
-          position = "0, -80";
           monitor = "";
+          size = "300, 60";
+          outline_thickness = 2;
+          # dot_size = 0.2;
+          dots_spacing = 0.2;
           dots_center = true;
+          outer_color = "rgba(255, 255, 255, 0)";
+          inner_color = "rgba(255, 255, 255, 0.1)";
+          font_color = "rgb(200, 200, 200)";
           fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
-          outline_thickness = 5;
-          placeholder_text = ''Password...'';
-          shadow_passes = 2;
+          placeholder_text = ''<i><span foreground="##ffffff99">🔒 Enter Pass</span></i>'';
+          hide_input = false;
+          position = "0, -250";
+          halign = "center";
+          valign = "center";
         }
       ];
     };

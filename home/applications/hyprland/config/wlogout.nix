@@ -16,7 +16,7 @@
       }
       {
         label = "suspend";
-        action = "systemctl suspend";
+        action = "hyprlock & systemctl suspend";
         text = "Suspend";
         keybind = "u";
       }

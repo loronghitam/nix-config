@@ -9,7 +9,6 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-pc-laptop
-    inputs.hardware.nixosModules.common-pc-laptop-acpi_call
     inputs.hardware.nixosModules.common-pc-laptop-ssd
 
     ./boot.nix

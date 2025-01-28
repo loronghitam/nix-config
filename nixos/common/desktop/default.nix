@@ -1,6 +1,6 @@
 {
   imports = [
     ./kde5.nix
-    ./hyprland.nix
+    # ./hyprland.nix
   ];
 }

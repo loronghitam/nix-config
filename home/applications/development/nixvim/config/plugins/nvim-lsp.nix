@@ -3,7 +3,7 @@
     nixd
     alejandra
     phpactor
-    intelephense
+    # intelephense
   ];
 
   plugins.lsp = {
@@ -22,10 +22,10 @@
           };
         };
       };
-      intelephense = {
-        enable = true;
-        package = pkgs.intelephense;
-      };
+      # intelephense = {
+      #   enable = true;
+      #   package = pkgs.intelephense;
+      # };
       html.enable = true;
       htmx.enable = true;
       cssls.enable = true;

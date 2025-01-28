@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
+  catppuccin = {
+    helix.enable = true;
+  };
   programs.helix = {
     enable = true;
-    catppuccin = {
-      enable = true;
-    };
     settings = {
       theme = lib.mkForce "cattpuccin-transparent";
       editor = {

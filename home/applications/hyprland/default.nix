@@ -8,14 +8,18 @@
     ./config/hyprlock.nix
     ./config/hyprpaper.nix
     ./config/rofi.nix
-    ./config/swaylock.nix
     ./config/swaync.nix
     ./config/waybar.nix
     ./config/wlogout.nix
   ];
 
   home.packages = with pkgs; [
-    clipboard-jh
+    wl-clipboard
+    wl-clip-persist
+    pamixer # pulseaudio command line mixer
+    brightnessctl
+    dunst
+    xwaylandvideobridge
   ];
 
   wayland.windowManager.hyprland = {
@@ -36,12 +40,23 @@
         "MOZ_ENABLE_WAYLAND, 1"
       ];
 
-      "exec-once" = [
+      exec-once = [
+        "wl-clip-persist --clipboard both &"
+        "wl-paste --watch cliphist store &"
         "waybar"
         "hypridle"
         "hyprpaper"
         "dbus-update-activation-environment --systemd --all"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
+      ];
+
+      windowrulev2 = [
+        "opacity 0.0 override,class:^(xwaylandvideobridge)$"
+        "noanim,class:^(xwaylandvideobridge)$"
+        "noinitialfocus,class:^(xwaylandvideobridge)$"
+        "maxsize 1 1,class:^(xwaylandvideobridge)$"
+        "noblur,class:^(xwaylandvideobridge)$"
+        "nofocus, class:^(xwaylandvideobridge)$"
       ];
 
       monitor = [
@@ -80,6 +95,16 @@
             )
             9)
         );
+
+      bindle = [
+        # Audio control
+        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+
+        # Brightness control
+        ",XF86MonBrightnessUp, exec, brightnessctl set 10%-"
+        ",XF86MonBrightnessDown, exec, brightnessctl set 10%+"
+      ];
 
       input = {
         touchpad = {

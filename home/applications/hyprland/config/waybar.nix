@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  home.file.".config/hypr/scripts/rofi-wifi.sh" = {
+    source = ./../asset/config/rofi-wifi-menu.sh;
+    executable = true;
+  };
   programs.waybar = {
     enable = true;
     catppuccin.enable = true;
@@ -50,6 +54,10 @@
         "pulseaudio" = {
           format = "{icon}";
           format-muted = "󰖁";
+          tooltip = true;
+          format-alt = "<small>{volume}%</small>";
+          on-scroll-up = "pamixer -i 10";
+          on-scroll-down = "pamixer -d 10";
           format-icons = {
             default = ["" "" "󰕾"];
           };
@@ -60,18 +68,23 @@
           format = "{icon}";
           tooltip = true;
           format-alt = "<small>{percent}%</small>";
+          on-scroll-up = "brightnessctl set 5%+";
+          on-scroll-down = "brightnessctl set 5%-";
           format-icons = ["󱩎" "󱩏" "󱩐" "󱩑" "󱩒" "󱩓" "󱩔" "󱩕" "󱩖" "󰛨"];
           tooltip-format = "Brightness {percent}%";
         };
 
         "network" = {
           interface = "wlan0";
+          min-length = 10;
+          fixed-width = 10;
           format-wifi = "<small>{bandwidthDownBytes}</small> {icon}";
           format-ethernet = "󰈀";
           format-disconnected = "󰤭";
           tooltip-format = "{essid}";
           interval = 1;
           format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+          on-click = "~/.config/hypr/scripts/rofi-wifi.sh";
         };
 
         "battery" = {

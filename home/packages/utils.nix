@@ -6,7 +6,7 @@
     ripgrep
     fd
     httpie
-    htop
+    btop
     lazygit
     gh
   ];
