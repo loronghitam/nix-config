@@ -37,7 +37,6 @@
     nix-index-database,
     catppuccin,
     nixvim,
-    hyprland,
     ...
   } @ inputs: let
     systemSettings = {
