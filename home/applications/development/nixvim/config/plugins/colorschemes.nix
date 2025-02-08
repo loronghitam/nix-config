@@ -1,9 +1,9 @@
 {
-  colorschemes.tokyonight = {
+  colorschemes.gruvbox = {
     enable = true;
     settings = {
-      transparent = true;
-      style = "night";
+      transparent_mode = true;
+      # terminal_colors = true;
     };
   };
 }

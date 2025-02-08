@@ -10,7 +10,7 @@
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       resurrect
-      tokyo-night-tmux
+      gruvbox
       {
         plugin = continuum;
         extraConfig = ''

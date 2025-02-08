@@ -3,36 +3,32 @@
     nixd
     alejandra
     phpactor
-    # intelephense
   ];
 
   plugins.lsp = {
     enable = true;
+    inlayHints = true;
     servers = {
       nixd = {
         enable = true;
         autostart = true;
-        settings.formatting.command = ["alejandra"];
-        extraOptions = {
-          nixos = {
-            expr = "(builtins.getFlake \"/home/muggle/nix-config\").nixosConfigurations.muggle.options";
-          };
-          home_manager = {
-            expr = "(builtins.getFlake \"/home/muggle/nix-config\").homeConfigurations.muggle.options";
+        settings = {
+          nixpkgs.expr = "import <nixpkgs> { }";
+          formatting.command = ["alejandra"];
+          options = let
+            flake = ''(builtins.getFlake "${./../../../../../..}")'';
+          in {
+            nixos.expr = ''${flake}.nixosConfigurations.nixos.options'';
+            home-manager.expr = ''${flake}.home-manager.users.options'';
+            nixvim.expr = ''${flake}.packages.x86_64-linux.default.options'';
           };
         };
       };
-      # intelephense = {
-      #   enable = true;
-      #   package = pkgs.intelephense;
-      # };
       html.enable = true;
       htmx.enable = true;
       cssls.enable = true;
       ts_ls.enable = true;
-      # JSON
       jsonls.enable = true;
-      # Blade template
       tailwindcss.enable = true;
     };
 
@@ -44,5 +40,6 @@
       client.server_capabilities.semanticTokensProvider = nil
     '';
   };
+
   plugins.lsp-format.enable = true;
 }

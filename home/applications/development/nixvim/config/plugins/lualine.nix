@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   extraPlugins = with pkgs.vimPlugins; [
-    tokyonight-nvim
+    gruvbox
   ];
   plugins.lualine = {
     enable = true;
     settings = {
       options = {
-        theme = "tokyonight-night";
+        theme = "gruvbox";
       };
     };
   };

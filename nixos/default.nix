@@ -54,5 +54,10 @@
     wrapperFeatures.gtk = true;
   };
 
+  programs.winbox = {
+    enable = true;
+    openFirewall = true;
+  };
+
   home-manager.backupFileExtension = "home-manager.bak";
 }

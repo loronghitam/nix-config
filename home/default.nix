@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  systemSettings,
+  ...
+}: {
   imports = [
     ./applications
     ./development
@@ -22,6 +27,7 @@
       openssl
       prisma
       prisma-engines
+      inputs.zen-browser.packages."${systemSettings.system}".default
     ];
   };
 
@@ -36,16 +42,5 @@
     PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
 
     EDITOR = "nvim";
-
-    # NIXOS_OZONE_WL = "1";
-    # MOZ_ENABLE_WAYLAND = "1";
-    #
-    # QT_QPA_PLATFORM = "wayland";
-    # GDK_BACKEND = "wayland";
-    # XDG_CURRENT_DESKTOP = "Hyprland";
-    # XDG_SESSION_TYPE = "wayland";
-    # _JAVA_AWT_WM_NONREPARENTING = "1";
-    # CLUTTER_BACKEND = "wayland";
-    # SDL_VIDEODRIVER = "wayland";
   };
 }

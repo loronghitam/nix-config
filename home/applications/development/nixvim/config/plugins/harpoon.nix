@@ -14,17 +14,4 @@
       };
     };
   };
-
-  # plugins.which-key.settings.spec = [
-  #   {
-  #     __unkeyed-1 = "<leader>a";
-  #     __unkeyed-2 = "<cmd>Harpoon";
-  #     desc = "Harpoon add file";
-  #   }
-  #   {
-  #     __unkeyed-1 = "<C-e>";
-  #     __unkeyed-2 = "<cmd>Harpoon";
-  #     desc = "Harpoon Toggle UI";
-  #   }
-  # ];
 }

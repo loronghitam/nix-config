@@ -1,28 +1,5 @@
 {
-  plugins.lspkind = {
-    enable = true;
-    symbolMap = {
-      # Codeium = "󰘦 ";
-      #   Copilot = " ";
-      #   Suggestion = " ";
-      #   TabNine = "󰏚 ";
-      #   Supermaven = "";
-      #   Error = "";
-      #   Hint = "";
-      #   Info = "";
-      #   Warn = "";
-      DiagnosticSignError = "";
-      DiagnosticSignHint = "";
-      DiagnosticSignInfo = "";
-      DiagnosticSignWarn = "";
-    };
-    cmp.enable = true;
-    cmp.maxWidth = 24;
-  };
-
   plugins = {
-    friendly-snippets.enable = true;
-    luasnip.enable = true;
     cmp = {
       enable = true;
       autoEnableSources = true;
@@ -39,8 +16,12 @@
           completeopt = "menu,menuone,preview,noselect";
         };
 
-        snippet = {expand = "luasnip";};
-        formatting = {fields = ["kind" "abbr" "menu"];};
+        snippet = {
+          expand = "luasnip";
+        };
+        formatting = {
+          fields = ["kind" "abbr" "menu"];
+        };
         window = {
           completion = {border = "solid";};
           documentation = {border = "solid";};
@@ -58,10 +39,5 @@
         };
       };
     };
-    cmp-nvim-lsp = {enable = true;}; # lsp
-    cmp-buffer = {enable = true;};
-    cmp-path = {enable = true;}; # file system paths
-    cmp_luasnip = {enable = true;}; # snippets
-    # cmp-cmdline = {enable = false;}; # autocomplete for cmdline
   };
 }

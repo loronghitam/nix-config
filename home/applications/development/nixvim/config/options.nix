@@ -35,5 +35,11 @@
     mouse = "";
     encoding = "utf8";
     swapfile = false;
+
+    foldcolumn = "0";
+    foldlevel = 99;
+    foldlevelstart = 99;
+    foldenable = true;
+    foldmethod = "indent";
   };
 }

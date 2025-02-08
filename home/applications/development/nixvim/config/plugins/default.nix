@@ -15,5 +15,6 @@
     ./treesitter.nix
     ./colorschemes.nix
     ./tmux-navigator.nix
+    # ./experiment.nix
   ];
 }
