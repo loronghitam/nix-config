@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   networking.firewall = {
     allowedTCPPorts = [80 443];
     allowedUDPPortRanges = [
@@ -23,13 +23,7 @@
       # macAddress = "preserve";
     };
     interfaces.enp3s0f3u1c2 = {
-      useDHCP = true;
-      # ipv4.addresses = [
-      #   {
-      #     address = "192.168.100.6";
-      #     prefixLength = 24;
-      #   }
-      # ];
+      useDHCP = lib.mkDefault true;
     };
     # defaultGateway = "192.168.100.1"; # Sesuaikan dengan gateway router Anda
     # nameservers = ["8.8.8.8" "8.8.4.4"]; # DNS server
