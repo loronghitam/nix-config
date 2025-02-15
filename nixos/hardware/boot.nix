@@ -11,6 +11,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
+    kernelParams = ["kvm.enable_virt_at_load=0"];
 
     # Penambahan inputan untuk wifi yang sering diskonek https://github.com/lwfinger/rtw89?tab=readme-ov-file#option-configuration
     extraModprobeConfig = ''
