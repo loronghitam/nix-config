@@ -11,8 +11,11 @@
 
   networking = {
     hostName = "nixos";
+    useDHCP = lib.mkForce true;
     networkmanager = {
       enable = true;
+      ethernet.macAddress = "preserve";
+
       wifi = {
         backend = "iwd";
         scanRandMacAddress = false;
@@ -22,11 +25,7 @@
       # https://search.nixos.org/options?channel=24.05&show=networking.networkmanager.wifi.macAddress&from=0&size=50&sort=relevance&type=packages&query=macAddress
       # macAddress = "preserve";
     };
-    interfaces.enp3s0f3u1c2 = {
-      useDHCP = lib.mkDefault true;
-    };
-    # defaultGateway = "192.168.100.1"; # Sesuaikan dengan gateway router Anda
-    # nameservers = ["8.8.8.8" "8.8.4.4"]; # DNS server
+
     wireless = {
       iwd = {
         enable = true;
