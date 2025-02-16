@@ -16,7 +16,6 @@
       uid = 1000;
       packages = with pkgs; [
         git
-        zellij
         home-manager
       ];
     };

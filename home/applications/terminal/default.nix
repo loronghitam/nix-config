@@ -1,7 +1,7 @@
 {
   imports = [
     ./alacritty.nix
-    ./zellij.nix
+    # ./zellij.nix
     ./tmux.nix
   ];
 }
