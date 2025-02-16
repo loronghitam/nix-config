@@ -5,7 +5,7 @@
     ./development
     ./office
     # ./hyprland
-    ./swaywm
+    # ./swaywm
     ./terminal
   ];
 }

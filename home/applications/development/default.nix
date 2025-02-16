@@ -1,8 +1,8 @@
 {
   imports = [
     ./jetbrains.nix
-    ./helix.nix
+    # ./helix.nix
     ./nixvim
-    ./zededitor.nix
+    # ./zededitor.nix
   ];
 }
