@@ -6,9 +6,11 @@
 
   programs.fish = {
     enable = true;
+
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
+
     shellAbbrs = {
       nrs = "sudo nixos-rebuild switch --flake ~/nix-config/";
       ls = "eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions";
@@ -18,6 +20,7 @@
       dcu = "podman-compose up -d";
       dcd = "podman-compose down";
     };
+
     shellInit = ''
       # direnv hook
       if status --is-interactive

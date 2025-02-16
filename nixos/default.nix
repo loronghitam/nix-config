@@ -28,6 +28,7 @@
     cachix
     comma
     devenv
+    anki
   ];
 
   programs.fish.enable = true;
@@ -40,7 +41,7 @@
 
   programs.nix-index.enableBashIntegration = true;
 
-  system.stateVersion = "unstable";
+  system.stateVersion = "25.05";
 
   programs.nh = {
     enable = true;

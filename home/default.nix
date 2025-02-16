@@ -25,13 +25,13 @@
       oh-my-fish
       eza
       openssl
-      prisma
-      prisma-engines
+      # prisma
+      # prisma-engines
       inputs.zen-browser.packages."${systemSettings.system}".default
     ];
   };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   programs.home-manager.enable = true;
 
