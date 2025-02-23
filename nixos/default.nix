@@ -33,6 +33,7 @@
 
   programs.fish.enable = true;
 
+  programs.kdeconnect.enable = true;
   programs.nix-index-database = {
     comma = {
       enable = true;
